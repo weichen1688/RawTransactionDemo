@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>RawTransaction Testing Program</title>
+    <style>
+        pre {
+            background: #E0F2F7;
+        }
+		.fancytable{border:1px solid #cccccc;border-collapse:collapse;}
+		.fancytable td{border:1px solid #cccccc; color:#555555;text-align:center;line-height:28px;}
+		.headerrow{ background-color:#0066cc;}
+		.headerrow td{ color:#ffffff; text-align:center;}
+		.dataroweven{ background-color:#efefef;}
+		.dataroweven td{ background-color:#acacaf;}
+    </style>
+</head>
+
+<body translate="no">
+
+    <h4>RawTransaction Test</h4>
+
+<table class="fancytable"  width="600" >
+<tbody>
+			<tr class="headerrow">   
+				<td style="text-align: center;"><font size="2">輸入Ｘ</font></td>
+				<td style="text-align: center;"><font size="2">輸入Ｙ</font></td>
+				<td style="text-align: center;"><font size="2">結果</font></td>
+				<td style="text-align: center;"width="75">Online</td>
+                <td style="text-align: center;"width="75">Offline</td>
+                <td style="text-align: center;"width="75">Retrive Keys from Wallet</td>
+                <td style="text-align: center;"width="75">Generate Wallet</td>
+			</tr>
+
+            <tr class="dataroweven">
+                <td><input id="data_X" type="text"/></td>
+                <td><input id="data_Y" type="text"/></td>
+                <td><input id="data_Sum" type="text" readonly /></td>
+                <td><button id="addXY">ADD_XY</button></td>
+                <td><button id="rawTxn">RawTx</button></td>
+                <td>輸入密碼：<input id="inp_pass" type='password' placeholder="input password"/></td>
+                <td>輸入密碼：<input id="inp_pass2" type='password' placeholder="input password"/></td>
+            </tr>
+
+            <tr class="dataroweven">
+                <td><textarea id="txn_parm_setX" rows="10"/></textarea></td>
+                <td><textarea id="txn_signed_setX" rows="10"></textarea></td>
+                <td>setX(uint x)<hidden id="data_Nonce"/></td>
+                <td><button id="getNonce">getNonce</button></td>
+                <td><button id="sendRawTxn_setX">send_setX</button></td>
+                <td>
+                    <div>Choose encrytped key file :</div>
+                    <div><input id="files" type='file' accept='text/plain'></div>
+                </td>
+                <td><button id="generateWallet">genWallet</button></td>
+            </tr>
+
+            <tr class="dataroweven">
+                <td><textarea id="txn_parm_setY" rows="10"/></textarea></td>
+                <td><textarea id="txn_signed_setY" rows="10"></textarea></td>
+                <td>setY(uint y)</td>
+                <td><button id="getSum">getSum</button></td>
+                <td><button id="sendRawTxn_setY">send_setY</button></td>
+                <td>
+                    <div>公鑰 : <textarea id="showpubkey" rows="2" readonly/></textarea></div>
+                    <div>私鑰 : <textarea id="showprivkey" rows="5" readonly/></textarea></div>
+                </td>
+                <td>
+                    <div>Wallet : <textarea id="show_wallet" rows="10" readonly/></textarea></div>
+                </td>
+            </tr>
+
+            <tr class="dataroweven">
+                <td><textarea id="txn_parm_addXY" rows="10"/></textarea></td>
+                <td><textarea id="txn_signed_addXY" rows="10"></textarea></td>
+                <td>addXY()</td>
+                <td></td>
+                <td><button id="sendRawTxn_addXY">send_addXY</button></td>
+                <td></td>
+                <td>
+                    <div>私鑰 : <textarea id="showprivkey2" rows="5" readonly/></textarea></div>
+                </td>
+            </tr>
+
+
+</tbody>
+</table>
+
+    <h4>日誌 : </h4>
+    <p id="keyobj_content"></p>
+    <pre id="log"></pre>
+
+
+    <script src='web3.min.js'></script>
+    <script src='jquery.min.js'></script>
+
+    <script src="SampleContract-browsify.js"></script>
+
+
+</body>
+
+</html>
